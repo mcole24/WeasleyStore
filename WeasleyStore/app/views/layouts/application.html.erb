@@ -30,6 +30,13 @@
         <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
       <% end %>
     </p>
+    <br><br>
+    
+    <nav class="navbar navbar-default navbar-static-top">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Home", products_path %></li>
+      </ul>
+    </nav>
     
     
     <%= yield %>

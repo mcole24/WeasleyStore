@@ -15,3 +15,18 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+    background: #56C271;
+}
+
+.whiteBackground {
+    background: white;
+    padding: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.roundedCorners {
+    border-radius: 15px;
+}

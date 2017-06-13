@@ -35,4 +35,5 @@
   <p><em>Muggle currency: <%= number_to_currency(@product.galleons * 7.35) %></em></p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= link_to 'Back', products_path %> | 
+<%= link_to 'Delete', { action: :destroy}, method: :delete, data: { confirm: 'Are you sure?' } %>

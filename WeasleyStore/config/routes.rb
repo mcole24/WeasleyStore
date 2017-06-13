@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   
   controller :charges do 
     post '/charges/get_sum' => 'charges#get_sum', as: :get_sum
+    post '/products/destroy' => 'products#destroy', as: :destroy
   end
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -27,8 +27,8 @@
   <br><br>
   
   <p>Weight: <%= @product.weight %> kg</p><br>
-  <p>Price: <%= @product.galleons %></p><br>
-  <p><em>Muggle currency: <%= @product.galleons * 7.35 %></em></p>
+  <p>Price: <%= @product.galleons %> Galleons</p><br>
+  <p><em>Muggle currency: <%= number_to_currency(@product.galleons * 7.35) %></em></p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

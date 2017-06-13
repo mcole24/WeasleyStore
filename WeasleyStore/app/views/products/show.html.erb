@@ -26,6 +26,10 @@
   </div>
   <br><br>
   
+  <p><%= @product.description %></p>
+  
+  <br><br>
+  
   <p>Weight: <%= @product.weight %> kg</p><br>
   <p>Price: <%= @product.galleons %> Galleons</p><br>
   <p><em>Muggle currency: <%= number_to_currency(@product.galleons * 7.35) %></em></p>

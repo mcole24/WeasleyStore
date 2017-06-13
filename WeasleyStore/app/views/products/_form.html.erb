@@ -16,10 +16,7 @@
     <%= f.text_field :product_name %>
   </div>
 
-  <div class="field">
-    <%= f.label :images %>
-    <%= f.text_area :images %>
-  </div>
+  <%= f.file_field :images, multiple: true %>
 
   <div class="field">
     <%= f.label :weight %>

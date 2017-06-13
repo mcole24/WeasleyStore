@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
     
-    serialize :images, Array
+    mount_uploaders :images, ImagesUploader
+    serialize :images, JSON
     
     monetize :price_cents, :allow_nil => true,
     :numericality => {

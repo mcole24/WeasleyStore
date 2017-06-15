@@ -16,13 +16,19 @@
     <%= f.text_field :product_name %>
   </div>
   
-  <%= f.file_field :images, multiple: true %><br>
   
- <% @product.images.each do |image| %>
-  <%= image_tag(image, class: "img-responsive img-rounded", :size => "65x45") %> 
-  <%= f.check_box :remove_images %>
-<% end %>
-
+  
+  <%= f.file_field :images, multiple: true %>
+  <br>
+  
+  <% @product.images.each do |image| %>
+    <%= image_tag(image, class: "img-responsive img-rounded", :size => "65x45") %>
+  <% end %>
+  
+  <br>
+  <%= f.check_box :remove_images %><p>Check the box to delete all images.</p>
+  
+  
   <div class="field">
     <%= f.label :weight %>
     <%= f.text_field :weight %>

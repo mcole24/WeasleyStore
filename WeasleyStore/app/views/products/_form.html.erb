@@ -15,8 +15,13 @@
     <%= f.label :product_name %>
     <%= f.text_field :product_name %>
   </div>
-
+  
   <%= f.file_field :images, multiple: true %><br>
+  
+ <% @product.images.each do |image| %>
+  <%= image_tag(image, class: "img-responsive img-rounded", :size => "65x45") %>
+  <%= f.check_box :remove_images %>
+<% end %>
 
   <div class="field">
     <%= f.label :weight %>

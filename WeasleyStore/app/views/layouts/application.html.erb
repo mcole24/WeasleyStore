@@ -35,7 +35,9 @@
                   <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link boldLinks btn btn-primary'  %></li>
                   <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link boldLinks btn btn-primary'  %></li>
                 <% end %>
-                <li><%= link_to 'Customers', page_path('customer_list'), :class => 'navbar-link boldLinks btn btn-primary' %></li>
+		<% if current_user.try(:admin?) %>
+                	<li><%= link_to 'Customers', page_path('customer_list'), :class => 'navbar-link boldLinks btn btn-primary' %></li>
+		<% end %>
               </ul>
            
               <ul class="nav pull-right navbar-nav">

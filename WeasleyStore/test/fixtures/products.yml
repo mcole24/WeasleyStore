@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  product_name: MyString
-  images: MyText
-  weight: 9.99
-  price_cents: 1
+  product_name: Bombtastic Bombs
+  images: 
+  weight: 2.00
+  galleons: 3
+  description: These are bombs!
 
 two:
   product_name: MyString
-  images: MyText
+  images: 
   weight: 9.99
-  price_cents: 1
+  galleons: 1
+  description: These are not bombs!

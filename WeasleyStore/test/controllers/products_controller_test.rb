@@ -45,4 +45,15 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to products_url
   end
+
+  test "should show galleon as integer" do
+    assert_equal true, @product.galleons.is_a?(Numeric)
+    assert_equal false, @product.galleons.is_a?(String)
+  end
+
+  test "should show weight as decimal" do
+    assert_equal true, @product.weight.is_a?(Numeric)
+    assert_equal false, @product.weight.is_a?(String)
+  end
+
 end

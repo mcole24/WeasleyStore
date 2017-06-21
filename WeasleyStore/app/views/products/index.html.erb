@@ -3,23 +3,32 @@
 <h1>Products</h1>
 <br>
 
+
+
+
 <div id="gridDisplay" class="col-md-12">
-  <% @products.in_groups_of(3, false).each do |group| %>
-    <div class='row'>
-      <% group.each do |product| %>
-        <div class='col-md-4'>
-          <h4 class="titleGridDisplay"><%= link_to product.product_name, product %></h4>
-          <% if product.images.size > 0 %>
-            <%= link_to (image_tag(product.images[0], class: "img-responsive img-rounded")), product %>
-          <% else %>
-            <%=  link_to (image_tag('noimage.jpeg', class: "img-responsive img-rounded")), product %>
+
+    
+      <% @products.in_groups_of(3, false).each do |group| %>
+        <div class='row'>
+          <% group.each do |product| %>
+            <div class='col-md-4'>
+              <h4 class="titleGridDisplay"><%= link_to product.product_name, product %></h4>
+              <% if product.images.size > 0 %>
+                <%= link_to (image_tag(product.images[0], class: "img-responsive img-rounded")), product %>
+              <% else %>
+                <%=  link_to (image_tag('noimage.jpeg', class: "img-responsive img-rounded")), product %>
+              <% end %>
+            </div>
           <% end %>
-        </div>
+        </div><br><br>
       <% end %>
-    </div><br><br>
-  <% end %>
+    
+
 </div>
 
+
+<%= paginate @products %>
 
 <br>
 <% if current_user.try(:admin?) %>

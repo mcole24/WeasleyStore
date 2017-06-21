@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
     
+    paginates_per 9
     mount_uploaders :images, ImagesUploader
     serialize :images, JSON
     

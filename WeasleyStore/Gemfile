@@ -44,6 +44,8 @@ gem 'stripe'
 gem 'httparty'
 gem 'carrierwave', '~> 1.0'
 gem 'high_voltage', '~> 3.0.0'
+gem 'kaminari'
+gem 'kaminari-bootstrap'
 
 gem 'figaro'
 

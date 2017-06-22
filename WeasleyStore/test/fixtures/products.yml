@@ -3,6 +3,7 @@
 one:
   product_name: Bombtastic Bombs
   images: 
+  quantity: 3
   weight: 2.00
   galleons: 3
   description: These are bombs!
@@ -10,6 +11,7 @@ one:
 two:
   product_name: MyString
   images: 
+  quantity: 1
   weight: 9.99
   galleons: 1
   description: These are not bombs!

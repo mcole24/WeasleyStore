@@ -29,7 +29,14 @@
   <p><%= @product.description %></p>
   
   <br><br>
-  
+ 
+  <% if @product.quantity.nil? %>
+    <p>Out of Stock</p><br>
+  <% elsif @product.quantity > 0 %>
+    <p>In Stock: <%= @product.quantity %></p><br>
+  <% else %>
+    <p>Out of Stock</p><br>
+  <% end %>
   <p>Weight: <%= @product.weight %> kg</p><br>
   <p>Price: <%= @product.galleons %> Galleons</p><br>
   <p><em>Muggle currency: <%= number_to_currency(@product.galleons * 7.35) %></em></p>

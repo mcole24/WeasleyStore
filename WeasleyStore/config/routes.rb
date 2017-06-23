@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   
   controller :products do
     post '/products/destroy' => 'products#destroy', as: :destroy
+    get '/products/add_to_cart' => 'products#add_to_cart', as: :add_to_cart
+    get '/products/remove_from_cart' => 'products#remove_from_cart', as: :remove_from_cart
   end
   
   controller :carts do 

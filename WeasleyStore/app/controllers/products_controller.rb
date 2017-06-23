@@ -60,7 +60,30 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+  def add_to_cart
+    @product = Product.find(params[:product_id])
+    params[:id] = @product
+    @newCartItem = Cart.create!(user_id: current_user.id, product_id: @product.id)
+    respond_to do |format|
+     	format.html { redirect_to @product, notice: 'Added to cart'} 
+     	format.json { render :show, status: :ok, location: @product } 
+   	end  
+  end
+  
+  def remove_from_cart
+    @product = Product.find(params[:product_id])
+    params[:id] = @product
+    @oldCartItem = Cart.where(:product_id => params[:product_id], :user_id => current_user.id).first
+    if @oldCartItem.present?
+      @oldCartItem.destroy()
+    end
+    respond_to do |format|
+   	  format.html { redirect_to @product, notice: 'This item was removed from your cart.'} 
+   	  format.json { render :show, status: :ok, location: @product } 
+ 	  end  
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product

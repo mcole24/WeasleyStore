@@ -10,4 +10,11 @@ class Product < ApplicationRecord
     #:less_than_or_equal_to => 10000
     #}
   
+    def self.search(term)
+      if term
+        where('product_name LIKE ?', "%#{term}%")
+      else
+        all
+      end
+    end
 end

@@ -9,17 +9,15 @@ Rails.application.routes.draw do
   resources :charges
   resource :shopping_cart
   
-  
-  controller :charges do 
-    post '/charges/get_sum' => 'charges#get_sum', as: :get_sum
-  end
-  
   controller :products do
     post '/products/destroy' => 'products#destroy', as: :destroy
     get '/products/add_to_cart' => 'products#add_to_cart', as: :add_to_cart
     get '/products/remove_from_cart' => 'products#remove_from_cart', as: :remove_from_cart
   end
   
+  controller :shopping_carts do 
+    post '/shopping_carts/remove' => 'shopping_carts#remove', as: :remove
+  end
 
   
 

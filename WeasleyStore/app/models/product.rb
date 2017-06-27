@@ -17,4 +17,10 @@ class Product < ApplicationRecord
         all
       end
     end
+    
+    
+  def convert_to_muggle(galleons)
+    return (galleons * 7.35)
+  end    
+    
 end

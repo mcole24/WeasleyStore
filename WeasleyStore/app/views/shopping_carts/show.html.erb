@@ -1,5 +1,33 @@
 <h1>Shopping Cart</h1>
 
-<%= render :partial => 'shopping_cart_item', :collection => @shopping_cart.shopping_cart_items %>
+<%#= render :partial => 'shopping_cart_item', :collection => @shopping_cart.shopping_cart_items %>
+<div>
+  <table class="table table-responsive">
+      <thead>
+          <tr>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Total Galleons</th>
+              <th>Total Price in Muggle Currency</th>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>
+          <% @shopping_cart.shopping_cart_items.each do |cart_item| %>
+              <tr>
+                  <td><%= link_to cart_item.item.product_name, cart_item.item %></td>
+                  <td><%= cart_item.item.quantity %></td>
+                  <td><%= cart_item.item.galleons %></td>
+                  <td><%= number_to_currency(cart_item.item.convert_to_muggle(cart_item.item.galleons * cart_item.item.quantity)) %></td>
+                  <td><%= link_to "X", cart_item.remove(cart_item.item, cart_item.quantity) %></td>
+              </tr>
+          <% end %>
+      </tbody>
+  </table>
+</div>
 
-Total:</b><%= number_to_currency @shopping_cart.total %>
+Total:</b><%= number_to_currency @shopping_cart.total %> 
+
+<br><br>
+
+<%#= link_to "Empty Cart", @shopping_cart.clear %>

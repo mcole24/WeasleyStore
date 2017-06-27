@@ -46,7 +46,7 @@
   <%= link_to 'Delete', { action: :destroy}, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <% end %>
 
-<%= link_to 'Add to Cart', add_to_cart_path(:product_id => @product.id) %>
+<%= link_to 'Add to cart', shopping_cart_path(:product_id => @product), :method => 'POST' %>
 
 <br><br>
 

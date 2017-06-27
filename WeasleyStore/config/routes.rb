@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   
   resources :products
   resources :charges
-  resources :carts
+  resource :shopping_cart
   
   
   controller :charges do 
@@ -20,11 +20,7 @@ Rails.application.routes.draw do
     get '/products/remove_from_cart' => 'products#remove_from_cart', as: :remove_from_cart
   end
   
-  controller :carts do 
-    get '/carts/index' => 'carts#index', as: :customer_list
-  end
-  
-  
+
   
 
   

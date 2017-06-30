@@ -1,39 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @cart.user %>
-</p>
-
-<p>
-  <strong>Items:</strong>
-  <%= @cart.items %>
-</p>
-
-<p>
-  <strong>Street1:</strong>
-  <%= @cart.street1 %>
-</p>
-
-<p>
-  <strong>Street2:</strong>
-  <%= @cart.street2 %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @cart.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @cart.state %>
-</p>
-
-<p>
-  <strong>Zip:</strong>
-  <%= @cart.zip %>
-</p>
+<h2>My Cart</h2>
+<table class="table table-responsive table-striped">
+    <thead>
+        <tr>
+            <th>Item</th>
+        </tr>
+        <tbody>
+            <% @cart.line_items.each do |item| %>
+                <tr>
+                    <td><%= item.product.product_name %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </thead>
+</table>
 
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>

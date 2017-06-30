@@ -5,11 +5,13 @@
     <thead>
         <tr>
             <th>Item</th>
+            <th>Quantity</th>
         </tr>
         <tbody>
             <% @cart.line_items.each do |item| %>
                 <tr>
                     <td><%= item.product.product_name %></td>
+                    <td><%= item.quantity %></td>
                 </tr>
             <% end %>
         </tbody>

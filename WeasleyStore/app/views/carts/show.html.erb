@@ -10,14 +10,13 @@
             <th>Total Price in Muggle Currency</th>
         </tr>
         <tbody>
-            <% @cart.line_items.each do |item| %>
-                <tr>
-                    <td><%= item.product.product_name %></td>
-                    <td><%= item.quantity %></td>
-                    <td><%= item.total_price %></td>
-                    <td><%= number_to_currency(item.convert_to_muggle(item.total_price)) %></td>
-                </tr>
-            <% end %>
+            <%= render(@cart.line_items) %>
+            <tr>
+                <td>Total</td>
+                <td><%= number_to_currency(@cart.total_price * 7.35) %></td>
+                <td></td>
+                <td></td>
+            </tr>
         </tbody>
     </thead>
 </table>
@@ -26,3 +25,4 @@
 <%= button_to 'Empty Cart', @cart, method: :delete, data: {confirm: 'Are you sure you want to empty your cart?'}, :class => 'btn btn-danger' %> 
 <br>
 <%= link_to 'Back', carts_path, :class => 'btn btn-primary' %>
+

@@ -36,6 +36,8 @@
 
   <% if @product.quantity.nil? %>
     <p>Out of Stock</p>
+  <% elsif not user_signed_in? %>
+    <br><p><strong><%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Log in", new_user_session_path %> to add to your cart.</strong></p>
   <% elsif @product.quantity > 0 %>
     <p>In Stock: <%= @product.quantity %></p>
     <%= button_to 'Add to cart', line_items_path(:product_id => @product) %>

@@ -1,3 +1,29 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.product-header {
+  font-weight: bold;
+  text-align: center;
+  font-size: 200%;
+}
+
+.product-desription {
+  text-align: center;
+  font-size: 125%;
+  line-height: 25px;
+}
+
+.product-details {
+  font-size: 125%;
+}
+
+.product-list {
+  font-size :150%;
+  text-align: center;
+}
+
+.product-image {
+  display: block;
+  margin: 0 auto;
+}

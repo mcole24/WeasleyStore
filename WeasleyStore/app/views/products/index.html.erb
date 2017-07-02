@@ -16,9 +16,9 @@
         <div class='row'>
           <% group.each do |product| %>
             <div class='col-md-4'>
-              <h4 class="titleGridDisplay"><%= link_to product.product_name, product %></h4>
+              <h4 class="titleGridDisplay product-list"><%= link_to product.product_name, product %></h4>
               <% if product.images.size > 0 %>
-                <%= link_to (image_tag(product.images[0], class: "img-responsive img-rounded")), product %>
+                <%= link_to (image_tag(product.images[0], class: "img-responsive img-rounded product-image")), product %>
               <% else %>
                 <%=  link_to (image_tag('noimage.jpeg', class: "img-responsive img-rounded")), product %>
               <% end %>

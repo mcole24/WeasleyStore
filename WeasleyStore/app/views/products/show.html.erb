@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-  <%= @product.product_name %>
-  <br>
+  <p class="product-header"><%= @product.product_name %></p>
+  <br><br>
   
   <div class="row">
 
     <% if @product.images.size >= 3 %>
-        <div class="col-md-4"><%= image_tag(@product.images[0], class: "img-responsive img-rounded") %></div>
-        <div class="col-md-4"><%= image_tag(@product.images[1], class: "img-responsive img-rounded") %></div>
-        <div class="col-md-4"><%= image_tag(@product.images[2], class: "img-responsive img-rounded") %></div>
+        <div class="col-md-4"><%= image_tag(@product.images[0], class: "img-responsive img-rounded product-image") %></div>
+        <div class="col-md-4"><%= image_tag(@product.images[1], class: "img-responsive img-rounded product-image") %></div>
+        <div class="col-md-4"><%= image_tag(@product.images[2], class: "img-responsive img-rounded product-image") %></div>
     <% end %>
 
     <% if @product.images.size == 2 %>
-        <div class="col-md-4"><%= image_tag(@product.images[0], class: "img-responsive img-rounded") %></div>
-        <div class="col-md-4"><%= image_tag(@product.images[1], class: "img-responsive img-rounded") %></div>
+        <div class="col-md-4"><%= image_tag(@product.images[0], class: "img-responsive img-rounded product-image") %></div>
+        <div class="col-md-4"><%= image_tag(@product.images[1], class: "img-responsive img-rounded product-image") %></div>
         <div class="col-md-4"></div>
     <% end %>
 
     <% if @product.images.size == 1 %>
-        <div class="col-md-4"><%= image_tag(@product.images[0], class: "img-responsive img-rounded") %></div>
+        <div class="col-md-4"><%= image_tag(@product.images[0], class: "img-responsive img-rounded product-image") %></div>
         <div class="col-md-4"></div>
         <div class="col-md-4"></div>
     <% end %>
@@ -26,23 +26,23 @@
   </div>
   <br><br>
   
-  <p><%= @product.description %></p>
+  <p class="product-desription"><%= @product.description %></p>
   
   <br><br>
  
-  <p>Weight: <%= @product.weight %> kg</p>
-  <p>Price: <%= @product.galleons %> Galleons</p>
-  <p><em>Muggle currency: <%= number_to_currency(@product.convert_to_muggle(@product.galleons)) %></em></p>
+  <p class="product-details">Weight: <%= @product.weight %> kg</p>
+  <p class="product-details">Price: <%= @product.galleons %> Galleons</p>
+  <p class="product-details"><em>Muggle currency: <%= number_to_currency(@product.convert_to_muggle(@product.galleons)) %></em></p>
 
   <% if @product.quantity.nil? %>
-    <p>Out of Stock</p>
+    <p><strong>Out of Stock</strong></p>
   <% elsif not user_signed_in? %>
-    <br><p><strong><%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Log in", new_user_session_path %> to add to your cart.</strong></p>
+    <br><p class="product-details"><strong><%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Log in", new_user_session_path %> to add to your cart.</strong></p>
   <% elsif @product.quantity > 0 %>
-    <p>In Stock: <%= @product.quantity %></p>
+    <p class="product-details">In Stock: <%= @product.quantity %></p>
     <%= button_to 'Add to cart', line_items_path(:product_id => @product) %>
   <% else %>
-    <p>Out of Stock</p>
+    <p><strong>Out of Stock</strong></p>
   <% end %>
 
   <% if current_user.try(:admin?) %>
@@ -52,4 +52,4 @@
 
 <br><br>
 
-<%= link_to 'Back', products_path %>
+<%= link_to 'Back', request.referer %>

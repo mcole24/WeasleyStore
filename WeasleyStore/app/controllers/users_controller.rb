@@ -11,12 +11,14 @@ class UsersController < ApplicationController
   # # GET /users/1
   # # GET /users/1.json
   def show
-
+    
   end
 
   # GET /users/1/edit
   def edit
-
+    unless current_user && current_user.admin?
+      redirect_to root_path, notice: "Must be signed in as Admin"
+    end
   end
 
   # # PATCH/PUT /users/1

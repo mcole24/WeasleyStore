@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update] # probably want to keep using this
+  before_action :set_user, only: [:show, :edit, :update, :destroy] # probably want to keep using this
 
   # GET /users
   # GET /users.json
@@ -32,6 +32,13 @@ class UsersController < ApplicationController
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @user.destroy
+    if @user.destroy
+      redirect_to users_path, notice: "Customer Account Removed"
     end
   end
 

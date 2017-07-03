@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :line_items
   resources :carts
   devise_for :users
+  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   resources :users, only: [:index, :show, :edit, :update]
   
   root 'products#index'

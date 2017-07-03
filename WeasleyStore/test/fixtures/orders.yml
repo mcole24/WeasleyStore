@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  address: MyText
+  first_name: John
+  last_name: Doe
+  address: 1234 Main St
+  city: Atlanta
+  state: GA
   email: MyString
   pay_type: 1
 
 two:
-  name: MyString
+  first_name: MyString
+  last_name: MyString
   address: MyText
+  city: MyText
+  state: MyText
   email: MyString
   pay_type: 1

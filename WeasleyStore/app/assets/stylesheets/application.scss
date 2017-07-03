@@ -55,6 +55,11 @@ body {
     margin-right: 0.8em;
 } 
 
+.jumbotron {
+    background-size: 100% 100%;
+    background-image: url(/assets/parchment.jpeg);
+}
+
 .jumbotron h1 {
     font-family: "Copperplate Gothic Light", Copperplate, fantasy;
 }

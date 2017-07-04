@@ -6,6 +6,6 @@
 
 ### Owners ###
 
-* Brandon Upshaw
+* Brandon Upshaw 
 * Joshua Lemon
 * Matthew Cole 

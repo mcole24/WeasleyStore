@@ -62,6 +62,10 @@ class CartsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def update_quantity
+    @line_item.update_attribute(:quantity)
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

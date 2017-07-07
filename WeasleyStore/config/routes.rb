@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :payments
   resources :orders
   resources :line_items
   resources :carts
@@ -17,8 +18,8 @@ Rails.application.routes.draw do
     get '/products/remove_from_cart' => 'products#remove_from_cart', as: :remove_from_cart
   end
   
-  controller :carts do 
-    post '/carts/update_quantity' => 'carts#update_quantity', as: :update_quantity
+  controller :line_items do 
+    post '/line_items/increase_quantity' => 'line_items#increase_quantity', as: :increase_quantity
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

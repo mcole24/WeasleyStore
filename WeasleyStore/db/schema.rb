@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170702180326) do
+ActiveRecord::Schema.define(version: 20170707225732) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -39,6 +39,32 @@ ActiveRecord::Schema.define(version: 20170702180326) do
     t.string   "last_name"
     t.string   "city"
     t.string   "state"
+  end
+
+  create_table "payment_line_items", force: :cascade do |t|
+    t.integer  "payment_id"
+    t.string   "buyable_type"
+    t.integer  "buyable_id"
+    t.integer  "price_cents",    default: 0,     null: false
+    t.string   "price_currency", default: "USD", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["buyable_type", "buyable_id"], name: "index_payment_line_items_on_buyable_type_and_buyable_id"
+    t.index ["payment_id"], name: "index_payment_line_items_on_payment_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "price_cents",    default: 0,     null: false
+    t.string   "price_currency", default: "USD", null: false
+    t.integer  "status"
+    t.string   "reference"
+    t.string   "payment_method"
+    t.string   "response_id"
+    t.         "full_response"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|

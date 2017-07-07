@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: [:create]
-  before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_line_item, only: [:show, :edit, :update, :destroy, :increase_quantity]
   
   # GET /line_items
   # GET /line_items.json
@@ -62,6 +62,14 @@ class LineItemsController < ApplicationController
       format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  def increase_quantity
+    @line_item.quantity += 1
+  end
+  
+  def decrease_quantity
+    @line_item.quantity -= 1
   end
 
   private

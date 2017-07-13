@@ -7,7 +7,7 @@ class ChargesController < ApplicationController
 
 	def create #METHOD IS CALLED AFTER PAYMENT IS MADE
 	 # Amount in cents
-	 @amount = 100
+	 @amount = @cart.total_price * 735
 
 	 customer = Stripe::Customer.create(
 	   :email => params[:stripeEmail],

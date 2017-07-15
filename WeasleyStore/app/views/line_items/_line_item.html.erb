@@ -10,4 +10,5 @@
     </td>
     <td><%= line_item.total_price %></td>
     <td><%= number_to_currency(line_item.convert_to_muggle(line_item.total_price)) %></td>
+    <td><%= link_to "Remove", empty_line_item_path(product_id: line_item.product), data: {confirm: 'Are you sure you want to empty your cart?'}, class:"btn btn-danger" %></td>
 </tr>

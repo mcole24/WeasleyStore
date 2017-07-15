@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :line_items do
     get 'decrease', on: :member
     get 'increase', on: :member
+    get 'empty', on: :member
   end
   resources :carts
   devise_for :users

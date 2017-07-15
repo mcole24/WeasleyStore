@@ -1,6 +1,13 @@
 <tr>
     <td><%= link_to line_item.product.product_name, line_item.product %></td>
-    <td>-&nbsp;<%= line_item.quantity %>&nbsp;+</td>
+    <td>
+      <%= link_to "-", decrease_line_item_path(product_id: line_item.product), class:"btn btn-danger" %>
+      <%= line_item.quantity %>
+      <% if line_item.product.quantity == line_item.quantity %>
+      <% else %>
+        <%= link_to "+", increase_line_item_path(product_id: line_item.product), class:"btn btn-success" %>
+      <% end %>
+    </td>
     <td><%= line_item.total_price %></td>
     <td><%= number_to_currency(line_item.convert_to_muggle(line_item.total_price)) %></td>
 </tr>

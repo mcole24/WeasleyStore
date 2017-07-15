@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   
   resources :charges
   resources :orders
-  resources :line_items
+  resources :line_items do
+    get 'decrease', on: :member
+    get 'increase', on: :member
+  end
   resources :carts
   devise_for :users
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user

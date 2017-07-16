@@ -3,11 +3,20 @@
 <h1>Products</h1>
 <br>
 
-<%= form_tag(products_path, method: :get) do %>
-  <%= text_field_tag :term, params[:term] %>
-  <%= submit_tag 'Search', name: nil %>
-<% end %><br>
-
+<div class="row">
+  <%= form_tag(products_path, method: :get) do %>
+    <div class="col-md-3">
+      <%= text_field_tag :term, params[:term], :class => "form-control", placeholder: "What are you looking for?" %>
+    </div>
+    <div class="col-md-1">
+      <%= button_tag(:class=> "btn btn-primary") do %>
+        <span class="glyphicon glyphicon-search"></span>
+      <% end %>
+    </div>
+    <div class="col-md-8"></div>
+  <% end %><br>
+</div>
+<br>
 
 <div id="gridDisplay" class="col-md-12">
 

@@ -7,7 +7,7 @@ class ChargesController < ApplicationController
 
 	def create #METHOD IS CALLED AFTER PAYMENT IS MADE
 	# Amount in cents
-	@amount = (@cart.total_price * 735) + 100
+	@amount = (@cart.total_price * 735) 
 	
 
 	customer = Stripe::Customer.create(
@@ -28,5 +28,6 @@ class ChargesController < ApplicationController
 	  flash[:error] = e.message
 	  redirect_to new_charge_path
 	end
+
 
 end

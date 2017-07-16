@@ -32,9 +32,8 @@
                 <%= link_to 'Back', products_path, :class => 'btn btn-primary whiteText' %>
             </div>
             <div class="col-md-4">
-                <%#= link_to "Checkout", new_charge_path, :class => 'btn btn-success whiteText' %>
+                <%= link_to "Checkout", new_charge_path, :class => 'btn btn-success whiteText' %>
                 <%#= link_to "Checkout", new_order_path, method: :get, :class => 'btn btn-success whiteText' %>
-                <%= link_to "Checkout", new_order_path, method: :get, :class => 'btn btn-success whiteText' %>
             </div>
             <div class="col-md-4">
                 <%= link_to 'Empty Cart', @cart, method: :delete, data: {confirm: 'Are you sure you want to empty your cart?'}, :class => 'btn btn-danger whiteText' %>

@@ -1,18 +1,89 @@
-<%= form_tag charges_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
-    <label class="amount">
-      <span>Amount: <%= number_to_currency(@cart.total_price * 7.35) %></span>
-    </label>
-  </article>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A one-time payment"
-          data-amount="<%= @cart.total_price * 735 %>"
-          data-locale="auto"></script>
-<% end %>
+
+
+
+  
+  
+  <div class="row">
+    
+    <div class="col-md-6">
+
+
+      <%= form_for(new_order_path) do |f| %>
+
+  
+      <div class="field">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, size: 20, :value => current_user.first_name, :class => "form-control" %>
+      </div>
+    
+      <div class="field">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, size: 20, :value => current_user.last_name, :class => "form-control" %>
+      </div>
+    
+      <div class="field">
+        <%= f.label :address %>
+        <%= f.text_area :address, size: 40, :value => current_user.address, :class => "form-control" %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :city %>
+        <%= f.text_area :city, size: 20, :value => current_user.city, :class => "form-control" %>
+      </div>  
+      
+      <div class="field">
+        <%= f.label :state %>
+        <%= f.text_area :state, size: 2, :value => current_user.state, :class => "form-control" %>
+      </div>  
+    
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.text_field :email, size: 40, :value => current_user.email, :class => "form-control" %>
+      </div>
+
+      <%= hidden_field_tag 'total_price', @cart.total_price  %>
+
+      <% end %>
+      
+    </div>  
+          
+      
+      <div class="col-md-6">
+           
+
+
+          <%= form_tag charges_path do %>
+          <article>
+              <% if flash[:error].present? %>
+                <div id="error_explanation">
+                  <p><%= flash[:error] %></p>
+                </div>
+              <% end %>
+              <label class="amount">
+                <span>Amount: <%= number_to_currency(@cart.total_price * 7.35) %></span>
+              </label>
+          </article>
+
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                  data-description="A one-time payment"
+                  data-amount="<%= @cart.total_price * 735 %>"
+                  data-locale="auto"></script>
+        <% end %>
+
+
+
+
+        
+      </div>
+  
+  </div>
+
+
+
+
+
+
+
+

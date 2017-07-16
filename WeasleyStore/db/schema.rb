@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711200924) do
+ActiveRecord::Schema.define(version: 20170716182931) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -32,13 +32,14 @@ ActiveRecord::Schema.define(version: 20170711200924) do
   create_table "orders", force: :cascade do |t|
     t.text     "address"
     t.string   "email"
-    t.integer  "pay_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "city"
     t.string   "state"
+    t.integer  "total_price", default: 0
+    t.boolean  "completed",   default: false
   end
 
   create_table "products", force: :cascade do |t|

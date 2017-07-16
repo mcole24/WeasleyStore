@@ -67,6 +67,10 @@ class CartsController < ApplicationController
     @line_item.update_attribute(:quantity)
   end
 
+  def get_total_price
+    @cart.total_price
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart

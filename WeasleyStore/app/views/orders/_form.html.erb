@@ -47,11 +47,8 @@
         <%= f.label :email %>
         <%= f.text_field :email, size: 40, :value => current_user.email, :class => "form-control" %>
       </div>
-    
-      <div class="field">
-        <%= f.label :pay_type %>
-        <%= f.select :pay_type, Order.pay_types.keys, prompt: 'Select a payment method', :class => "form-control" %>
-      </div>
+
+      <%= hidden_field_tag 'total_price', @cart.total_price  %>
       
     </div>  
       
@@ -59,28 +56,7 @@
       
       <div class="col-md-6">
         
-        <%= form_tag(payments_path, class: "form-inline") do %>
-          <%= hidden_field_tag(:purchase_amount_cents, @cart.total_price) %>
-          <div class="form_group">
-            <%= label_tag(:credit_card_number, "Credit Card Number", class: "sr-only") %>
-            <%= text_field_tag(:credit_card_number, "", class: "form-control", placeholder: "Credit Card #") %>
-          </div>
-          <br>
-          <div class="form_group">
-            <%= label_tag(:expiration_month, "Month", class: "sr-only") %>
-            <%= text_field_tag(:expiration_month, "", class: "form-control", placeholder: "Month") %>
-            <br>
-            <%= label_tag(:expiration_year, "Year", class: "sr-only") %>
-            <%= text_field_tag(:expiration_year, "", class: "form-control", placeholder: "Year") %>
-            <br>
-            <%= label_tag(:cvc, "Year", class: "sr-only") %>
-            <%= text_field_tag(:cvc, "", class: "form-control", placeholder: "CVC #") %>
-          </div>
-          <br>
-          <div class="form_group">
-            <%= submit_tag("Purchase Cart", class: "btn btn-default", id: "purchase") %>
-          </div>
-        <% end %>
+        
         
       </div>
   

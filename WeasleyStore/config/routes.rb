@@ -26,5 +26,6 @@ Rails.application.routes.draw do
     post '/line_items/increase_quantity' => 'line_items#increase_quantity', as: :increase_quantity
   end
 
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

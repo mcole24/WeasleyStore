@@ -29,18 +29,6 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
-    @order.total_price = @cart.total_price
-    respond_to do |format|
-      if @order.save
-        #Cart.destroy(session[:cart_id])
-        #session[:cart_id] = nil
-        #OrderMailer.received(@order).deliver_later
-        format.html { redirect_to new_charge_path }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /orders/1

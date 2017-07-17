@@ -1,9 +1,9 @@
-require 'test_helper'
+#require 'test_helper'
 
-class OrdersControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @order = orders(:one)
-  end
+#class OrdersControllerTest < ActionDispatch::IntegrationTest
+  #setup do
+  #  @order = orders(:one)
+  #end
 
   # Not fully implemented in this iteration
 
@@ -30,21 +30,21 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   #   assert_response :success
   # end
 
-  test "should get edit" do
-    get edit_order_url(@order)
-    assert_response :success
-  end
+  #test "should get edit" do
+  #  get edit_order_url(@order)
+  #  assert_response :success
+  #end
 
   # test "should update order" do
   #   patch order_url(@order), params: { order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type } }
   #   assert_redirected_to order_url(@order)
   # end
 
-  test "should destroy order" do
-    assert_difference('Order.count', -1) do
-      delete order_url(@order)
-    end
+  #test "should destroy order" do
+  #  assert_difference('Order.count', -1) do
+  #    delete order_url(@order)
+  #  end
 
-    assert_redirected_to orders_url
-  end
-end
+  #  assert_redirected_to orders_url
+  #end
+#end

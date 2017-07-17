@@ -3,6 +3,7 @@
 
 
   
+
   
   <div class="row">
     
@@ -11,44 +12,46 @@
       
       <div class="col-md-8">
            
-
+      <h3>Confirm address and make payment</h3>
+      <br>  
 
       <%= form_tag charges_path do %>
       
-        <%= fields_for :orders do |f| %>
-           <div class="field">
+         <%= fields_for :charges do |f| %>
+
+          <div class="field">
             <%= f.label :first_name %>
-            <%= f.text_field :first_name, size: 20, :value => current_user.first_name, :class => "form-control" %>
+            <%= f.text_field :first_name, size: 20, :value => current_user.first_name, :class => 'form-control' %>
           </div>
 
           <div class="field">
             <%= f.label :last_name %>
-            <%= f.text_field :last_name, size: 20, :value => current_user.last_name, :class => "form-control" %>
+            <%= f.text_field :last_name, size: 20, :value => current_user.last_name, :class => 'form-control' %>
           </div>
 
           <div class="field">
             <%= f.label :address %>
-            <%= f.text_area :address, size: 40, :value => current_user.address, :class => "form-control" %>
+            <%= f.text_area :address, size: 40, :value => current_user.address, :class => 'form-control' %>
           </div>
 
           <div class="field">
             <%= f.label :city %>
-            <%= f.text_area :city, size: 20, :value => current_user.city, :class => "form-control" %>
+            <%= f.text_field :city, size: 20, :value => current_user.city, :class => 'form-control' %>
           </div>  
 
           <div class="field">
             <%= f.label :state %>
-            <%= f.text_area :state, size: 2, :value => current_user.state, :class => "form-control" %>
+            <%= f.text_field :state, size: 2, :value => current_user.state, :class => 'form-control' %>
           </div>  
 
           <div class="field">
             <%= f.label :email %>
-            <%= f.text_field :email, size: 40, :value => current_user.email, :class => "form-control" %>
+            <%= f.text_field :email, size: 40, :value => current_user.email, :class => 'form-control' %>
           </div>
 
-          <%= hidden_field_tag 'total_price', @cart.total_price  %>
+          <%= f.hidden_field :total_price, :value => @cart.total_price  %>
 
-        <% end %>
+          <% end %>
 
         <br>
 

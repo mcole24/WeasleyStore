@@ -1,10 +1,39 @@
 class ChargesController < ApplicationController
     include CurrentCart
-    before_action :set_cart, only: [:new, :create]
+    before_action :set_cart, only: [:new, :create, :index, :edit]
     #before_action :set_charge, only: [:create]
 
     def new
     	@charge = Charge.new
+	end
+	
+	def index
+		@charges = Charge.all
+		unless current_user && current_user.admin?
+		  redirect_to root_path, notice: "Must be signed in as Admin"
+		end
+	end
+	
+	def show
+		
+	end
+	
+	def edit
+		unless current_user && current_user.admin?
+		  redirect_to root_path, notice: "Must be signed in as Admin"
+		end
+	end
+	
+	def update
+		respond_to do |format|
+			if @charge.update(charge_params)
+				format.html { redirect_to @charge, notice: 'Order was successfully updated.' }
+				format.json { render :show, status: :ok, location: @charge }
+			else
+				format.html { render :edit }
+				format.json {render json: @charge.errors, status: :unprocessable_entity }
+			end
+		end
 	end
 
 	def create #METHOD IS CALLED AFTER PAYMENT IS MADE

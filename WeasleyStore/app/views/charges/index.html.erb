@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Orders</h1>
+<br>
+
+<ul>
+    <% @charges.each do |order| %>
+      <li>
+          <%= link_to edit_charge_path(order) do %>
+            <%= order.last_name %>, <%= order.first_name %> - <%= order.total_price %> galleon(s)
+          <% end %>
+      </li>
+    <% end %>
+</ul>

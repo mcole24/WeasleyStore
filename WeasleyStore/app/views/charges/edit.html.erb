@@ -1,0 +1,7 @@
+<h1>Edit Order</h1>
+<br><br>
+<%= render 'form', order: @order %>
+
+
+<%= link_to "Delete", admin_destroy_charge_path(@charge), method: :delete, data: { confirm: "Are you sure?" } %> |
+<%= link_to "Back", charges_path %>

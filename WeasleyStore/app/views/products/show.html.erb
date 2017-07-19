@@ -6,19 +6,19 @@
   <div class="row">
 
     <% if @product.images.size >= 3 %>
-        <div class="col-md-4"><%= image_tag(@product.images[0], class: "img-responsive img-rounded product-image") %></div>
-        <div class="col-md-4"><%= image_tag(@product.images[1], class: "img-responsive img-rounded product-image") %></div>
-        <div class="col-md-4"><%= image_tag(@product.images[2], class: "img-responsive img-rounded product-image") %></div>
+        <div class="col-md-4"><%= image_tag(@product.images[0], class: "img-responsive img-rounded product-image hvr-wobble-top") %></div>
+        <div class="col-md-4"><%= image_tag(@product.images[1], class: "img-responsive img-rounded product-image hvr-wobble-skew") %></div>
+        <div class="col-md-4"><%= image_tag(@product.images[2], class: "img-responsive img-rounded product-image hvr-wobble-bottom") %></div>
     <% end %>
 
     <% if @product.images.size == 2 %>
-        <div class="col-md-4"><%= image_tag(@product.images[0], class: "img-responsive img-rounded product-image") %></div>
-        <div class="col-md-4"><%= image_tag(@product.images[1], class: "img-responsive img-rounded product-image") %></div>
+        <div class="col-md-4"><%= image_tag(@product.images[0], class: "img-responsive img-rounded product-image hvr-wobble-top") %></div>
+        <div class="col-md-4"><%= image_tag(@product.images[1], class: "img-responsive img-rounded product-image hvr-wobble-bottom") %></div>
         <div class="col-md-4"></div>
     <% end %>
 
     <% if @product.images.size == 1 %>
-        <div class="col-md-4"><%= image_tag(@product.images[0], class: "img-responsive img-rounded product-image") %></div>
+        <div class="col-md-4"><%= image_tag(@product.images[0], class: "img-responsive img-rounded product-image hvr-wobble-skew") %></div>
         <div class="col-md-4"></div>
         <div class="col-md-4"></div>
     <% end %>

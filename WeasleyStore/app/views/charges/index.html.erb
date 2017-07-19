@@ -3,12 +3,25 @@
 <h1>Orders</h1>
 <br>
 
-<ul>
+
+<table class="table table-responsive table-striped">
+  <thead>
+    <tr>
+      <th>Customer Name</th>
+      <th>Total price in Galleons</th>
+      <th>Date/Time</th>
+    </tr>
+  </thead>
+  <tbody>
     <% @charges.each do |order| %>
-      <li>
-          <%= link_to edit_charge_path(order) do %>
-            <%= order.last_name %>, <%= order.first_name %> - <%= order.total_price %> galleon(s)
-          <% end %>
-      </li>
+      <tr>
+        <td><%= link_to edit_charge_path(order) do %><%= order.last_name %>, <%= order.first_name %><% end %></td>
+        <td><%= link_to edit_charge_path(order) do %><%= order.total_price %><% end %></td>
+        <td><%= link_to edit_charge_path(order) do %><%= order.created_at %><% end %></td>
+      </tr>
     <% end %>
-</ul>
+  </tbody>
+</table>
+<br>
+<%= paginate @charges %>
+<br>

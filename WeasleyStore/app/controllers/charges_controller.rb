@@ -8,7 +8,7 @@ class ChargesController < ApplicationController
 	end
 	
 	def index
-		@charges = Charge.all
+		@charges = Charge.all.page(params[:page]).per(5)
 		unless current_user && current_user.admin?
 		  redirect_to root_path, notice: "Must be signed in as Admin"
 		end

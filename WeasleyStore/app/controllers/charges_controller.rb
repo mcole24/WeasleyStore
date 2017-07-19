@@ -1,7 +1,7 @@
 class ChargesController < ApplicationController
     include CurrentCart
     before_action :set_cart, only: [:new, :create, :index, :edit]
-    #before_action :set_charge, only: [:create]
+    before_action :set_charge, only: [:show, :edit, :update]
 
     def new
     	@charge = Charge.new
@@ -28,10 +28,10 @@ class ChargesController < ApplicationController
 		respond_to do |format|
 			if @charge.update(charge_params)
 				format.html { redirect_to @charge, notice: 'Order was successfully updated.' }
-				format.json { render :show, status: :ok, location: @charge }
+				format.json { render :index, status: :ok, location: @charge }
 			else
 				format.html { render :edit }
-				format.json {render json: @charge.errors, status: :unprocessable_entity }
+				format.json { render json: @charge.errors, status: :unprocessable_entity }
 			end
 		end
 	end
@@ -39,7 +39,7 @@ class ChargesController < ApplicationController
 	def create #METHOD IS CALLED AFTER PAYMENT IS MADE
 	# Amount in cents
 
-	@charge = Charge.new(charge_params)
+	@charge = Charge.new(charges_params)
 	@charge.save
 	@amount = (@cart.total_price * 735) 
 	
@@ -71,7 +71,11 @@ class ChargesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def charge_params
-      params.require(:charges).permit(:first_name, :last_name, :address, :city, :state, :email, :total_price)
+      params.require(:charge).permit(:first_name, :last_name, :address, :city, :state, :email, :total_price)
     end
+    
+    def charges_params
+    	params.require(:charges).permit(:first_name, :last_name, :address, :city, :state, :email, :total_price)
+    end	
 
 end

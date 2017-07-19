@@ -102,8 +102,6 @@ class LineItemsController < ApplicationController
   def empty
     product = Product.find(params[:product_id])
     @line_item = @cart.empty_product(product)
-    @total = @line_item.quantity
-    product.increment!(:quantity, @total)
 
     respond_to do |format|
       if @line_item.save

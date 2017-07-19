@@ -28,6 +28,7 @@ class LineItemsController < ApplicationController
   def create
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product)
+    product.decrement!(:quantity)
 
     respond_to do |format|
       if @line_item.save
@@ -67,10 +68,11 @@ class LineItemsController < ApplicationController
   def decrease
     product = Product.find(params[:product_id])
     @line_item = @cart.remove_product(product)
+    product.increment!(:quantity)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to cart_path, notice: 'Line item was successfully updated.' }
+        format.html { redirect_to cart_path }
         format.js
         format.json { render :show, status: :ok, location: @line_item }
       else
@@ -83,10 +85,11 @@ class LineItemsController < ApplicationController
   def increase
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product)
+    product.decrement!(:quantity)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to :back, notice: 'Line item was successfully updated.' }
+        format.html { redirect_to :back }
         format.js
         format.json { render :show, status: :ok, location: @line_item }
       else
@@ -99,10 +102,12 @@ class LineItemsController < ApplicationController
   def empty
     product = Product.find(params[:product_id])
     @line_item = @cart.empty_product(product)
+    @total = @line_item.quantity
+    product.increment!(:quantity, @total)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to :back, notice: 'Line item was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Product removed.' }
         format.js
         format.json { render :show, status: :ok, location: @line_item }
       else

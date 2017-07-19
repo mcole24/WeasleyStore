@@ -3,7 +3,7 @@
     <td>
       <%= link_to "-", decrease_line_item_path(product_id: line_item.product), class:"btn btn-danger" %>
       <%= line_item.quantity %>
-      <% if line_item.product.quantity == line_item.quantity %>
+      <% if line_item.product.quantity == 0 %>
       <% else %>
         <%= link_to "+", increase_line_item_path(product_id: line_item.product), class:"btn btn-success" %>
       <% end %>

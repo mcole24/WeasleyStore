@@ -72,7 +72,15 @@ body {
     text-align: center;
 }
 
-
 body, a:hover {
     cursor: url(http://cur.cursors-4u.net/user/use-1/use160.cur), progress !important;
 } 
+
+.magic:before {
+    content: "Weasleys' Wizard Wheezes";
+}
+.magic:hover:before {
+    content: "I solemnly swear that I am up to no good";
+    font-size: 30px;
+    font-family: "Papyrus";
+}

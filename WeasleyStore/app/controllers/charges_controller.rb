@@ -28,7 +28,7 @@ class ChargesController < ApplicationController
 		respond_to do |format|
 			if @charge.update(charge_params)
 				format.html { redirect_to @charge, notice: 'Order was successfully updated.' }
-				format.json { render :index, status: :ok, location: @charge }
+				format.json { render :show, status: :ok, location: @charge }
 			else
 				format.html { render :edit }
 				format.json { render json: @charge.errors, status: :unprocessable_entity }

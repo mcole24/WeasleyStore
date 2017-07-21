@@ -101,6 +101,9 @@ class LineItemsController < ApplicationController
 
   def empty
     product = Product.find(params[:product_id])
+    line_item = LineItem.where(cart_id: @cart, product_id: product).first
+    @total = line_item.quantity
+    product.increment!(:quantity, @total)
     @line_item = @cart.empty_product(product)
 
     respond_to do |format|
